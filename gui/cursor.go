@@ -26,20 +26,50 @@ func InitCursor() *Cursor {
 // MoveLeft moves the cursor left
 func (cur *Cursor) MoveLeft() {
 
+	newPos := cur.PosX - 1
+
+	if newPos >= 0 {
+		cur.PosX = newPos
+	}
+
+	cur.UpdatePos()
 }
 
 // MoveRight moves the cursor right
 func (cur *Cursor) MoveRight() {
 
+	newPos := cur.PosX + 1
+
+	if newPos < cur.LimitX {
+		cur.PosX = newPos
+	}
+
+	cur.UpdatePos()
 }
 
 // MoveUp moves the cursor up
 func (cur *Cursor) MoveUp() {
 
+	newPos := cur.PosY - 1
+
+	if newPos >= 0 {
+		cur.PosY = newPos
+	}
+
+	cur.UpdatePos()
+
 }
 
 // MoveDown moves the cursor down
 func (cur *Cursor) MoveDown() {
+
+	newPos := cur.PosY + 1
+
+	if newPos < cur.LimitY {
+		cur.PosY = newPos
+	}
+
+	cur.UpdatePos()
 
 }
 
